@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+    <color name="blue_violet">#5A53AC</color>
+    <color name="victoria">#4B4196</color>
+    <color name="sunglow">#FFCA2C</color>
+    <color name="black_alpha_38">#61000000</color>
+    <color name="black_alpha_87">#DE000000</color>
+    <color name="wistful">#A8AAD6</color>
+
+    <!-- Common -->
+    <color name="colorPrimary">@color/blue_violet</color>
+    <color name="colorSecondary">@color/wistful</color>
+    <color name="colorPrimaryDark">@color/victoria</color>
+    <color name="colorAccent">@color/sunglow</color>
+
 </resources>

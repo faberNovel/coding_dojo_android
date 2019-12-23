@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">CodingDojo</string>
-    <string name="action_settings">Settings</string>
+    <string name="loading">Loading…</string>
+    <string name="error">Error: %1$s</string>
+    <string name="movie_card_release_date_title">"Date de sortie"</string>
+    <string name="movie_card_genre_title">"Genre"</string>
+    <string name="movie_rating_format">%.1f / 5</string>
+    <string name="tab_in_theatre_title">"AU CINÉMA"</string>
+    <string name="tab_top_year_title">"TOP %d"</string>
+    <string name="tab_to_come_title">"À VENIR"</string>
 </resources>

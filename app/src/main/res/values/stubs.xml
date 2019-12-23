@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="movie_card_title" type="id"/>
+    <item name="movie_card_release_date_value" type="id"/>
+    <item name="movie_card_genre_value" type="id"/>
+    <item name="movie_card_poster" type="id"/>
+    <item name="movie_card_stars" type="id"/>
+    <item name="move_card_rating" type="id"/>
+</resources>
