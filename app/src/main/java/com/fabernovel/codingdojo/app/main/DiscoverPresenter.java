@@ -56,7 +56,7 @@ public class DiscoverPresenter {
     }
 
     private void getMovies() {
-        movieRepository.getMovies(getMoviesCallback);
+        movieRepository.getMoviesInTheatre(getMoviesCallback);
     }
 
     public void stop() {

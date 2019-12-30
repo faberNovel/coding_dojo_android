@@ -1,6 +1,7 @@
 package com.fabernovel.codingdojo.data;
 
 import android.content.Context;
+import android.icu.util.Calendar;
 import com.fabernovel.codingdojo.entity.Movie;
 import com.fabernovel.codingdojo.utils.AppExecutors;
 import java.io.IOException;
@@ -8,14 +9,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Response;
-import timber.log.Timber;
 
 public class MovieRepository {
 
@@ -38,30 +37,6 @@ public class MovieRepository {
         this.appExecutors = appExecutors;
         this.mapper = mapper;
         this.network = Network.getInstance(context);
-    }
-
-    public void getMovie(GetMovieCallback callback) {
-        appExecutors.onNetworkIO(() -> {
-            try {
-                Movie movie = fetchMovie();
-                dispatchSuccess(movie, callback);
-            } catch (ParseException e) {
-                Timber.w(e);
-                dispatchError(e, callback);
-            }
-        });
-    }
-
-    public void getMovies(GetMoviesCallback callback) {
-        appExecutors.onNetworkIO(() -> {
-            try {
-                List<Movie> movies = fetchMovies();
-                dispatchSuccess(movies, callback);
-            } catch (ParseException e) {
-                Timber.w(e);
-                dispatchError(e, callback);
-            }
-        });
     }
 
     @NotNull
@@ -108,16 +83,48 @@ public class MovieRepository {
         return list;
     }
 
-    public void getUpcomingMovies(GetMovieCallback callback) {
-        // TODO: implementation
+    public void getUpcomingMovies(GetMoviesCallback callback) {
+        appExecutors.onNetworkIO(() -> {
+            Call<RestDiscoverResponse> call = network.movieApi().discoverMovies(
+                API_KEY,
+                today(),
+                null,
+                null,
+                null,
+                FRENCH
+            );
+
+            fetchMovieList(callback, call);
+        });
     }
 
-    public void getTopMoviesOfTheYear(GetMovieCallback callback) {
-        // TODO: implementation
+    public void getTopMoviesOfTheYear(GetMoviesCallback callback) {
+        appExecutors.onNetworkIO(() -> {
+            Call<RestDiscoverResponse> call = network.movieApi().discoverMovies(
+                API_KEY,
+                null,
+                null,
+                currentYear(),
+                SORT_BY_VOTE,
+                FRENCH
+            );
+            fetchMovieList(callback, call);
+        });
     }
 
-    public void getMoviesInTheatre(GetMovieCallback callback) {
-        // TODO: implementation
+    public void getMoviesInTheatre(GetMoviesCallback callback) {
+        appExecutors.onNetworkIO(() -> {
+            Call<RestDiscoverResponse> call = network.movieApi().discoverMovies(
+                API_KEY,
+                inCinemaStartDate(),
+                today(),
+                null,
+                null,
+                FRENCH
+            );
+
+            fetchMovieList(callback, call);
+        });
     }
 
     private void fetchMovieList(GetMoviesCallback callback, Call<RestDiscoverResponse> call) {
@@ -135,7 +142,6 @@ public class MovieRepository {
                         movies.add(mapper.map(restMovie, restGenres));
                     });
                 }
-
                 dispatchSuccess(movies, callback);
             }
         } catch (IOException e) {
