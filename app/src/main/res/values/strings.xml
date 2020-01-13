@@ -2,4 +2,7 @@
     <string name="app_name">CodingDojo</string>
     <string name="loading">Loading…</string>
     <string name="error">Error: %1$s</string>
+
+    <string name="movie_card_release_date_title">"Date de sortie"</string>
+    <string name="movie_card_genre_title">"Genre"</string>
 </resources>
