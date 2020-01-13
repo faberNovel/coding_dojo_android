@@ -30,13 +30,12 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-        <TextView
-            android:id="@+id/main_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <include
+            layout="@layout/item_movie"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movie_card_height"
+            android:layout_margin="@dimen/unit_2"
             />
-
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
