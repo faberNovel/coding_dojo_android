@@ -8,7 +8,6 @@
     <include
         android:id="@+id/movie_card"
         layout="@layout/item_movie"
-        android:visibility="gone"
         />
 
     <TextView
@@ -16,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="TODO: CREATE THE LAYOUT"
         />
 
 </FrameLayout>

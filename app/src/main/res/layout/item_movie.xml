@@ -2,17 +2,125 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/movie_card_height"
     app:cardCornerRadius="@dimen/movie_card_corner_radius"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="8dp"
         >
-        <!-- TODO: add movie card content -->
-    </LinearLayout>
 
+        <ImageView
+            android:id="@+id/movie_card_poster"
+            android:layout_width="@dimen/movie_card_poster_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/joker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/movie_card_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/unit_2"
+                android:textAppearance="@style/Headline6"
+                tools:text="Joker"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                >
+
+                <RatingBar
+                    android:id="@+id/movie_card_stars"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_2"
+                    android:isIndicator="true"
+                    android:stepSize="0.33"
+                    tools:rating="3.4"
+                    />
+
+                <TextView
+                    android:id="@+id/move_card_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_1"
+                    android:textAppearance="@style/Subtitle2"
+                    tools:text="3,4/5"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/movie_card_release_date_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_2"
+                    android:text="@string/movie_card_release_date_title"
+                    android:textAppearance="@style/Label"
+                    tools:text="Date de sortie "
+                    />
+
+                <TextView
+                    android:id="@+id/movie_card_release_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_1"
+                    android:textAppearance="@style/Caption"
+                    tools:text="9 oct. 2019"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/movie_card_genre_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_2"
+                    android:text="@string/movie_card_genre_title"
+                    android:textAppearance="@style/Label"
+                    tools:text="Genre "
+                    />
+
+                <TextView
+                    android:id="@+id/movie_card_genre_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/unit_1"
+                    android:textAppearance="@style/Caption"
+                    tools:text="Drame"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
