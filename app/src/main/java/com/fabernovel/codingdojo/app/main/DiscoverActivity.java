@@ -6,6 +6,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import com.fabernovel.codingdojo.R;
 
 // TODO: implement DiscoverViewContract
 public class DiscoverActivity extends AppCompatActivity{
@@ -22,8 +23,7 @@ public class DiscoverActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: set content view
-
+        setContentView(R.layout.activity_discover);
         // TODO: initialize views
     }
 
