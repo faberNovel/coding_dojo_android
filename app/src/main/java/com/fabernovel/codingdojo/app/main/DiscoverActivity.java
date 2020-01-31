@@ -1,15 +1,18 @@
 package com.fabernovel.codingdojo.app.main;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.fabernovel.codingdojo.R;
+import com.fabernovel.codingdojo.entity.Movie;
+import com.fabernovel.codingdojo.utils.DateUtils;
+import com.squareup.picasso.Picasso;
 
-// TODO: implement DiscoverViewContract
-public class DiscoverActivity extends AppCompatActivity {
+public class DiscoverActivity extends AppCompatActivity implements DiscoverViewContract {
 
     private CardView movieCard;
     private TextView discoverMessage;
@@ -45,5 +48,35 @@ public class DiscoverActivity extends AppCompatActivity {
     protected void onStop() {
         // TODO: stop the presenter
         super.onStop();
+    }
+
+    public void showLoading() {
+        discoverMessage.setText(R.string.loading);
+
+        discoverMessage.setVisibility(View.VISIBLE);
+        movieCard.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showContent(Movie model) {
+        movieTitle.setText(model.getTitle());
+        movieRatingBar.setRating(model.getRating());
+        movieRating.setText(getString(R.string.movie_rating_format, model.getRating()));
+        movieReleaseDate.setText(DateUtils.formatDate(model.getReleaseDate()));
+        movieGenres.setText(model.getGenre());
+        Picasso.get()
+            .load(model.getPosterPath())
+            .into(moviePoster);
+
+        discoverMessage.setVisibility(View.GONE);
+        movieCard.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showError(CharSequence message) {
+        discoverMessage.setText(message);
+
+        discoverMessage.setVisibility(View.VISIBLE);
+        movieCard.setVisibility(View.GONE);
     }
 }
