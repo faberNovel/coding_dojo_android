@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView;
 import com.fabernovel.codingdojo.R;
 
 // TODO: implement DiscoverViewContract
-public class DiscoverActivity extends AppCompatActivity{
+public class DiscoverActivity extends AppCompatActivity {
 
     private CardView movieCard;
     private TextView discoverMessage;
@@ -24,7 +24,15 @@ public class DiscoverActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover);
-        // TODO: initialize views
+
+        movieCard = findViewById(R.id.movie_card);
+        discoverMessage = findViewById(R.id.discoverMessage);
+        movieTitle = findViewById(R.id.movie_card_title);
+        moviePoster = findViewById(R.id.movie_card_poster);
+        movieRatingBar = findViewById(R.id.movie_card_stars);
+        movieRating = findViewById(R.id.move_card_rating);
+        movieReleaseDate = findViewById(R.id.movie_card_release_date_value);
+        movieGenres = findViewById(R.id.movie_card_genre_value);
     }
 
     @Override
