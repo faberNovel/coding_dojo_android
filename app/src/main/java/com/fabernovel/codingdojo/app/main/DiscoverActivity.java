@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 public class DiscoverActivity extends AppCompatActivity implements DiscoverViewContract {
 
+    private DiscoverPresenter presenter;
+
     private CardView movieCard;
     private TextView discoverMessage;
     private TextView movieTitle;
@@ -26,6 +28,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = DiscoverPresenter.getInstance(this);
         setContentView(R.layout.activity_discover);
 
         movieCard = findViewById(R.id.movie_card);
@@ -41,15 +44,16 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
     @Override
     protected void onStart() {
         super.onStart();
-        // TODO: start the presenter
+        presenter.start(this);
     }
 
     @Override
     protected void onStop() {
-        // TODO: stop the presenter
+        presenter.stop();
         super.onStop();
     }
 
+    @Override
     public void showLoading() {
         discoverMessage.setText(R.string.loading);
 
