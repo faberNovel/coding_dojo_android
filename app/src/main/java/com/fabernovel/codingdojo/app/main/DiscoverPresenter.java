@@ -30,12 +30,16 @@ public class DiscoverPresenter {
     private GetMovieCallback getMovieCallback = new GetMovieCallback() {
         @Override
         public void onGetMovie(Movie movie) {
-            // TODO: show content in view
+            if (view != null) {
+                view.showContent(movie);
+            }
         }
 
         @Override
         public void onError(@NonNull Throwable error) {
-            // TODO: 20/08/2020 (sjcqs) show error in view
+            if (view != null) {
+                view.showError(error.getMessage());
+            }
         }
     };
 
@@ -45,7 +49,9 @@ public class DiscoverPresenter {
 
     public void start(@NonNull DiscoverViewContract view) {
         this.view = view;
-        // TODO: show loading and load content
+
+        view.showLoading();
+        movieRepository.getMovie(getMovieCallback);
     }
 
     public void stop() {
