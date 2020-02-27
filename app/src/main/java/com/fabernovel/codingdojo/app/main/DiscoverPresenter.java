@@ -8,6 +8,8 @@ import com.fabernovel.codingdojo.data.MovieRepository;
 import com.fabernovel.codingdojo.entity.Movie;
 import com.fabernovel.codingdojo.utils.AppExecutors;
 
+import java.util.List;
+
 public class DiscoverPresenter {
 
     public static DiscoverPresenter getInstance(Context context) {
@@ -27,9 +29,9 @@ public class DiscoverPresenter {
     @NonNull
     private GetMovieCallback getMovieCallback = new GetMovieCallback() {
         @Override
-        public void onGetMovie(Movie movie) {
+        public void onGetMovies(@NonNull List<Movie> movies) {
             if (view != null) {
-                view.showContent(movie);
+                view.showContent(movies);
             }
         }
 
@@ -47,9 +49,12 @@ public class DiscoverPresenter {
 
     public void start(@NonNull DiscoverViewContract view) {
         this.view = view;
-
         view.showLoading();
-        movieRepository.getMovie(getMovieCallback);
+        getMovies();
+    }
+
+    private void getMovies() {
+        movieRepository.getMovies(getMovieCallback);
     }
 
     public void stop() {

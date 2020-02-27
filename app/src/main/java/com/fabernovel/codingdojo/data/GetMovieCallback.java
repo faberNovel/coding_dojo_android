@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 
 import com.fabernovel.codingdojo.entity.Movie;
 
+import java.util.List;
+
 public interface GetMovieCallback {
-    void onGetMovie(Movie movie);
+    void onGetMovies(List<Movie> movies);
     void onError(@NonNull Throwable error);
 }

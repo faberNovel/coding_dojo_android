@@ -31,4 +31,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public int getItemCount() {
         return dataSet.size();
     }
+
+    void submitList(List<Movie> models) {
+        dataSet.clear();
+        dataSet.addAll(models);
+        notifyDataSetChanged();
+    }
 }

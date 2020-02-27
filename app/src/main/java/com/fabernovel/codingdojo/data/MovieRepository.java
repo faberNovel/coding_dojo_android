@@ -29,30 +29,16 @@ public class MovieRepository {
         this.network = Network.getInstance(context);
     }
 
-    public void getMovie(GetMovieCallback callback) {
+    public void getMovies(GetMovieCallback callback) {
         appExecutors.onNetworkIO(() -> {
             try {
-                Movie movie = fetchMovie();
-                dispatchSuccess(movie, callback);
+                List<Movie> movies = fetchMovies();
+                dispatchSuccess(movies, callback);
             } catch (ParseException e) {
                 Timber.w(e);
                 dispatchError(e, callback);
             }
         });
-    }
-
-    @NotNull
-    private Movie fetchMovie() throws ParseException {
-        String dateString = "2019-10-02";
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
-        Date releaseDate = format.parse(dateString);
-        return new Movie(
-            "Joker",
-            "https://image.tmdb.org/t/p/w300/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-            3.4F,
-            releaseDate,
-            "Drame"
-        );
     }
 
     @NotNull
@@ -89,7 +75,7 @@ public class MovieRepository {
         appExecutors.onMainThread(() -> callback.onError(e));
     }
 
-    private void dispatchSuccess(Movie movie, GetMovieCallback callback) {
-        appExecutors.onMainThread(() -> callback.onGetMovie(movie));
+    private void dispatchSuccess(List<Movie> movies, GetMovieCallback callback) {
+        appExecutors.onMainThread(() -> callback.onGetMovies(movies));
     }
 }
