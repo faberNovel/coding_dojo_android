@@ -3,11 +3,13 @@ package com.fabernovel.codingdojo.app.main;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.fabernovel.codingdojo.data.GetMovieCallback;
+import com.fabernovel.codingdojo.data.GetMoviesCallback;
 import com.fabernovel.codingdojo.data.MovieRepository;
 import com.fabernovel.codingdojo.data.RestMovieMapper;
 import com.fabernovel.codingdojo.entity.Movie;
 import com.fabernovel.codingdojo.utils.AppExecutors;
+
+import java.util.List;
 
 public class DiscoverPresenter {
 
@@ -27,11 +29,11 @@ public class DiscoverPresenter {
     private DiscoverViewContract view;
 
     @NonNull
-    private GetMovieCallback getMovieCallback = new GetMovieCallback() {
+    private GetMoviesCallback getMoviesCallback = new GetMoviesCallback() {
         @Override
-        public void onGetMovie(Movie movie) {
+        public void onGetMovies(List<Movie> movies) {
             if (view != null) {
-                view.showContent(movie);
+                view.showContent(movies);
             }
         }
 
@@ -49,9 +51,12 @@ public class DiscoverPresenter {
 
     public void start(@NonNull DiscoverViewContract view) {
         this.view = view;
-
         view.showLoading();
-        movieRepository.getMovie(getMovieCallback);
+        getMovies();
+    }
+
+    private void getMovies() {
+        movieRepository.getMovies(getMoviesCallback);
     }
 
     public void stop() {

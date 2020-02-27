@@ -7,10 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fabernovel.codingdojo.R;
 import com.fabernovel.codingdojo.entity.Movie;
+import java.util.List;
 
 public class DiscoverActivity extends AppCompatActivity implements DiscoverViewContract {
-
     private DiscoverPresenter presenter;
+    MoviesAdapter adapter = new MoviesAdapter();
 
     private TextView discoverMessage;
     private RecyclerView movieRecycler;
@@ -23,6 +24,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
 
         discoverMessage = findViewById(R.id.discoverMessage);
         movieRecycler = findViewById(R.id.movie_recycler);
+        setupRecycler();
     }
 
     @Override
@@ -37,6 +39,10 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
         super.onStop();
     }
 
+    private void setupRecycler() {
+        movieRecycler.setAdapter(adapter);
+    }
+
     @Override
     public void showLoading() {
         discoverMessage.setText(R.string.loading);
@@ -45,7 +51,8 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
     }
 
     @Override
-    public void showContent(Movie model) {
+    public void showContent(List<Movie> movies) {
+        adapter.submitList(movies);
         discoverMessage.setVisibility(View.GONE);
         movieRecycler.setVisibility(View.VISIBLE);
     }
