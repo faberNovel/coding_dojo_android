@@ -1,5 +1,6 @@
 package com.fabernovel.codingdojo.app.main;
 
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fabernovel.codingdojo.R;
 import com.fabernovel.codingdojo.entity.Movie;
+import com.google.android.material.tabs.TabLayout;
 import java.util.List;
 
 public class DiscoverActivity extends AppCompatActivity implements DiscoverViewContract {
@@ -21,6 +23,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
         super.onCreate(savedInstanceState);
         presenter = DiscoverPresenter.getInstance(this);
         setContentView(R.layout.activity_discover);
+        setupTabLayout();
 
         discoverMessage = findViewById(R.id.discoverMessage);
         movieRecycler = findViewById(R.id.movie_recycler);
@@ -39,6 +42,14 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
         super.onStop();
     }
 
+    private void setupTabLayout() {
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        TabLayout.Tab topYearTab = tabLayout.getTabAt(1);
+        if (topYearTab != null) {
+            int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+            topYearTab.setText(getString(R.string.tab_top_year_title, currentYear));
+        }
+    }
     private void setupRecycler() {
         movieRecycler.setAdapter(adapter);
     }
