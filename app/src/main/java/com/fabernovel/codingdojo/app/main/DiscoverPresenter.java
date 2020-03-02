@@ -40,7 +40,7 @@ public class DiscoverPresenter {
         @Override
         public void onError(@NonNull Throwable error) {
             if (view != null) {
-                view.showError(error.getMessage());
+                view.showError(error.getLocalizedMessage());
             }
         }
     };
@@ -52,11 +52,19 @@ public class DiscoverPresenter {
     public void start(@NonNull DiscoverViewContract view) {
         this.view = view;
         view.showLoading();
-        getMovies();
+        onMoviesInTheatre();
     }
 
-    private void getMovies() {
+    void onMoviesInTheatre() {
         movieRepository.getMoviesInTheatre(getMoviesCallback);
+    }
+
+    void onTopMoviesOfTheYear() {
+        movieRepository.getTopMoviesOfTheYear(getMoviesCallback);
+    }
+
+    void onUpcomingMovies() {
+        movieRepository.getUpcomingMovies(getMoviesCallback);
     }
 
     public void stop() {

@@ -49,7 +49,42 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverViewC
             int currentYear = Calendar.getInstance().get(Calendar.YEAR);
             topYearTab.setText(getString(R.string.tab_top_year_title, currentYear));
         }
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                onTab(tab);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                //no-op
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                //no-op
+            }
+        });
     }
+
+    private void onTab(TabLayout.Tab tab) {
+        showLoading();
+        switch (tab.getPosition()) {
+            case 0:
+                presenter.onMoviesInTheatre();
+                break;
+
+            case 1:
+                presenter.onTopMoviesOfTheYear();
+                break;
+
+            case 2:
+                presenter.onUpcomingMovies();
+                break;
+        }
+    }
+
+
     private void setupRecycler() {
         movieRecycler.setAdapter(adapter);
     }
