@@ -1,0 +1,710 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Étapes du Dojo</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="73f5f1a6-8ff6-4278-8ff2-d7e10f05068a" class="page serif"><header><img class="page-cover-image" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/maxresdefault.jpg" style="object-position:center 67.87%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">👨‍🏫</span></div><h1 class="page-title">Étapes du Dojo</h1></header><div class="page-body"><h2 id="f4abd967-a45e-4fdc-9269-24df67feb121" class="">Application de découverte de films:</h2><p id="f9ca9945-6e03-44a9-9718-1e65c178f8ba" class="">Durant les prochaines heures, nous allons créer une application Android. </p><p id="571230bb-83de-428b-97f9-687c61d9dee9" class="">Cette application utilisera l&#x27;API mise à disposition par la base de données de films <a href="https://www.themoviedb.org/?language=en-US">The Movie Database (TMDb)</a> pour afficher sous forme de carte :</p><ul id="8be447c3-f130-4d66-aa0f-362cc8b9c754" class="bulleted-list"><li>Les films au cinéma actuellement</li></ul><ul id="0eef2181-3240-4d63-ad8c-02bd94fa07c3" class="bulleted-list"><li>Le top des films de l&#x27;année</li></ul><ul id="4cfb7c16-aa18-4c9c-9720-cdeba035f773" class="bulleted-list"><li>Les films à venir</li></ul><p id="54c73a3c-c46d-4572-8144-f3c54bf6d877" class="">En bonus (🃏), il sera aussi possible d&#x27;ajouter ces films en favoris afin de garder une sélection de film dans l&#x27;application.</p><p id="01f3c449-28e5-4cc2-a6a8-f7f4a38af9d7" class="">
+</p><h2 id="3257af94-6df0-4ee3-b8d3-0faf7993cf85" class="">Architecture du code</h2><h3 id="661d26a6-f466-4413-8d60-6c665abd1943" class="">Model View Presenter (MVP) + Repository</h3><ul id="58f69d17-8df8-418c-bc45-3da30abca094" class="bulleted-list"><li><strong>View:</strong><p id="1b4e37fc-ae34-4817-9ad7-13ff9b44e5cc" class="">La <strong>View</strong> correspond à l&#x27;interface que l&#x27;utilisateur aura sous les yeux. Elle est en charge d&#x27;informer le <strong>Presenter</strong> des actions de l&#x27;utilisateur et d&#x27;afficher les données récupérées. Elle est matérialisée ici par une interface <code>&lt;name&gt;ViewContract</code> qui permet d&#x27;abstraire les actions possibles sur notre vue.</p></li></ul><ul id="91cd718d-f53c-4d1b-b5c2-84027e9eb001" class="bulleted-list"><li><strong>Presenter:</strong><p id="eb1d6e69-606a-477e-be80-22e0fb6bebc6" class="">Le <strong>Presenter </strong>reçoit les actions de l&#x27;utilisateur et sera en charge de récupérer les données pertinentes du <strong>Model </strong>dans le<strong> Repository</strong>. Il permet de faire le lien entre la <strong>View </strong>et le <strong>Model</strong>.</p></li></ul><ul id="9235447c-41f8-4c57-9516-69d071533652" class="bulleted-list"><li><strong>Model: </strong><p id="09502596-1d6a-4fdd-9c10-ad5385588a7c" class="">Le <strong>Model </strong>regroupe l&#x27;ensemble des ressources métiers de notre application qui seront affichées.</p></li></ul><ul id="178915fe-0b8e-4ab6-8a2b-c80328d30b1e" class="bulleted-list"><li><strong>Repository:</strong><p id="529e7d85-8b99-416d-b8b1-bf1ffcb75fb6" class="">Le <strong>Repository </strong>va servir à récupérer les données de l&#x27;application de diverses manières, dans une base de données, en cache ou encore sur des API.</p></li></ul><figure id="a5585c80-6b80-4faf-b833-966745df9039" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled.png"><img style="width:352px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled.png"/></a></figure><h3 id="b2bf3714-af3f-4ccb-b836-abaec770b6bc" class="">Executors (threading)</h3><p id="abae7ff9-71c2-46d7-8251-b373c4d00e6e" class="">Sur Android, il est impossible de faire des appels réseaux sur le <strong>main thread</strong> (thread en charge de la vue, il est en charge d&#x27;afficher l&#x27;application avec un certain nombre de frame par seconde). </p><p id="920af8bf-1a77-4820-86f6-72b2a9eb29ed" class="">Il faut donc passer les appels réseau sur un autre thread puis envoyé la réponse sur le <strong>main thread</strong>.</p><p id="4a6f3af9-2701-4b4c-933c-87d50f48ea8d" class="">Pour facilité la gestion des threads, en s&#x27;inspirant des recommandations de Google en terme d&#x27;architecture d&#x27;application, la classe <code>AppExecutors</code> a été créée. Elle permet d&#x27;avoir accès à 3 types d&#x27;executors qui permet de lancer des actions sur 3 types de threads: le <strong>main thread</strong>, le thread <strong>network IO</strong> et le thread <strong>disk IO</strong>.</p><h3 id="34b8150b-46ba-40e7-8df9-c2f6f0225d5d" class="">Activité:</h3><blockquote id="7f7fb222-5e8a-4fb0-9ba7-1e477c8a03ff" class="">An <code>Activity</code> is a single, focused thing that the user can do. (<a href="https://developer.android.com/reference/android/app/Activity">https://developer.android.com/reference/android/app/Activity</a>)</blockquote><p id="497d7a1b-6b08-4965-bf62-2f29757eec80" class="">Une application Android, est composée d’une ou plusieurs activités (et de fragments). </p><p id="507a67dd-4e0a-4d0a-afeb-e9450bbbccdd" class="">Ces objets suivent un cycle de vie dès lors que l’application est lancée.</p><p id="5384baf4-5c14-4c0e-a6ca-7d5fa455a65f" class="">
+</p><ul id="95105fe9-f055-4e5e-8817-bf6cefd61cf7" class="bulleted-list"><li><code>onCreate</code>:  <p id="87247628-f33c-4ade-bb2e-574ed27a1532" class="">C&#x27;est ici que nous allons créer la vue de notre activité et initialiser les vues de cette dernière.</p></li></ul><ul id="7d1fcd85-4836-4902-b32e-2e994fcbef9b" class="bulleted-list"><li><code>onStart</code>:<p id="96409ef3-70f8-4514-a1f2-88ab5bc4563e" class="">Démarrage de l&#x27;activité, c&#x27;est ici qu&#x27;on va appeler le presenter pour aller chercher les données.</p></li></ul><ul id="05cc473a-bffd-4e99-a01e-b8cf820dcb6f" class="bulleted-list"><li><code>onStop</code>: (symétrique de <code>onCreate</code>)<p id="c43f338f-9064-4cbb-9d06-8b4eec1334c1" class="">Il faut informer le presenter que l&#x27;activité est arrêtée, et donc qu&#x27;il ne faut pas essayer de la mettre à jour si des données cherchées sont disponibles.</p></li></ul><ul id="9e4042b5-8786-4fab-bd21-df652cd4800c" class="bulleted-list"><li><code>onDestroy</code>: (symétrique de <code>onCreate</code>)<p id="0ff22a50-9be5-4947-8ae7-460be1e4ef3a" class="">L&#x27;activité est détruite.</p><p id="1942dd72-49d4-463b-a521-9254a0902bef" class="">
+</p></li></ul><figure id="f0286cee-377e-4527-836d-81e97796e1ff" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/activity.png"><img style="width:197px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/activity.png"/></a><figcaption>Simplified activity lifecycle</figcaption></figure><p id="3f3f0b27-4de3-41a5-910a-6b7228df0ad1" class=""><a href="https://developer.android.com/guide/components/activities/activity-lifecycle">https://developer.android.com/guide/components/activities/activity-lifecycle</a></p><h2 id="91510a7b-ecae-445f-9ceb-6437055eab39" class="">1. Création de la carte d&#x27;un film</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cdd60306-669d-4a25-ba8a-ccb93d795f62"><div style="font-size:1.5em"><span class="icon">🛫</span></div><div style="width:100%">Pour commencer: <code>git stash -a &amp;&amp; git checkout step1.0</code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7bfc2b81-2cd1-477b-938b-ad2542ffebce"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour la liste complète des raccourcis : <a href="https://developer.android.com/studio/intro/keyboard-shortcuts">https://developer.android.com/studio/intro/keyboard-shortcuts</a>
+Vous trouverez le raccourci permettant de corriger une erreur ou un warning en étant guidé par Android Studio sous le nom <em>Project quick fix (show intention actions and quick fixes)</em>. C&#x27;est <strong>Alt+Enter</strong> sur Windows / Linux et <strong>Option+Enter</strong> sur Mac.</div></figure><h3 id="cca6d0aa-4d9d-4e7f-b8de-6aa592ccd824" class="">Inflate un layout dans une activité</h3><blockquote id="ef286061-fb73-4a67-8380-3eeca4f5f56f" class="">A layout defines the structure for a user interface in your app, such as in an activity. All elements in the layout are built using a hierarchy of View and ViewGroup objects. A View usually draws something the user can see and interact with.
+(<a href="https://developer.android.com/guide/topics/ui/declaring-layout">https://developer.android.com/guide/topics/ui/declaring-layout</a>)</blockquote><p id="1ae02d19-b3d0-4d58-b1ed-4dd981cca725" class="">La façon la plus utilisée pour créer l&#x27;interface utilisateur de notre activité est d&#x27;utiliser un layout. </p><p id="57a7bf38-6408-4acc-9b7f-5ce401b945b6" class="">C&#x27;est un fichier XML qui définit la structure de notre interface utilisateur. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="50431b3d-a0ea-4e2c-8857-681d5543cb1a"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Ouvrir le fichier <code>app/res/layout/activity_discover.xml</code></div></figure><p id="b2164b83-a6a4-4181-a163-699a72245742" class="">Vous devriez voir l&#x27;écran ci-dessous:</p><p id="aac24b01-8384-44f9-a7fa-50e8cfa9a64e" class="">
+</p><figure id="ecc62f26-b0b0-45f8-823e-eba89ffbae47" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%201.png"><img style="width:1917px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%201.png"/></a></figure><p id="4a8e9402-6622-47e5-a252-4d9b3cd0be38" class="">Comme vous pouvez le voir, un layout ressemble plus ou moins à un fichier HTML. On a ici un <code>ViewGroup</code>, le <code>FrameLayout</code> qui contient tout simplement des vues sans arrangement spécial, et une <code>View</code>, la <code>TextView</code> qui permet d&#x27;afficher du texte. </p><p id="d47ad7c5-474c-4604-b356-674b6e735a3a" class="">Pour utiliser ce layout dans notre activité, il faut utiliser la méthode <code>setContentView</code> lors de la création de l&#x27;activité.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="abff2ee9-b14d-474e-882b-fabe5d203259"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Ouvrir la classe <code>com.fabernovel.codingdojo.app.main.</code><code>DiscoverActivity</code> et utiliser <code>setContentView</code> pour inflate le layout <code>activity_discover</code>. </div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="76b7f129-c1d9-4753-a94a-c26b81aab2fe"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour accéder aux ressources de l&#x27;application depuis une classe, il faut utiliser <code>R.&lt;type de la ressource&gt;.&lt;nom de la ressource&gt;</code>. 
+Ici ce sera donc <code>R.layout.activity_discover</code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7dbea7c8-bd6d-49cf-a516-055ed762352f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour chercher une classe utiliser le raccourci <code>CTRL+N</code> / <code>CMD + O</code>
+Pour chercher une fichier, utiliser <code>CTRL+SHIFT+N</code> / <code>CMD+SHIFT+N</code></div></figure><div id="68069c5d-6782-48d7-ae93-fcf87814170b" class="column-list"><div id="27dc3414-70bd-498c-9668-d47fb03befec" style="width:68.75%" class="column"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6169c358-2e1f-406e-9e39-cfb06c5d4ad6"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Relancer l&#x27;application</div></figure></div><div id="1292c9de-9b55-40eb-adad-960e39e1cfac" style="width:31.25%" class="column"><figure id="63191e5a-9754-4ad9-8dc0-9d3be59bde7f" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%202.png"><img style="width:414px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%202.png"/></a></figure><p id="f9da5ba6-cbcd-4b46-9f18-ce563e189c90" class="">
+</p></div></div><ul id="7cc73919-a291-4d7e-902e-51bd0761bf68" class="toggle"><li><details open=""><summary>Vous devriez avoir l&#x27;écran ci-dessus: </summary><figure id="d0dda308-e209-4e2d-9b4e-7cc86012de02" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%203.png"><img style="width:240px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%203.png"/></a></figure></details></li></ul><hr id="1fe96161-b488-493e-8525-19be60e337e7"/><h3 id="592e8814-313a-4660-849d-3e8e1e5268e2" class="">Création de la carte d&#x27;un film</h3><p id="a41b7229-ddd0-49d4-bc71-89fc066cfc29" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9d32ef4b-3013-4031-8466-10d83f1c60bf"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step1.2</code></div></figure><p id="b8082fc4-99e1-4a12-823e-fdcfdb4f7d9d" class="">Le but maintenant va être d&#x27;afficher la carte ci-dessous:</p><figure id="0aaeba83-e3ad-4100-b3a6-117dec0ae01a" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%204.png"><img style="width:768px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%204.png"/></a><figcaption>Layout d&#x27;une carte de film</figcaption></figure><figure id="3603339e-88f6-4f2a-b365-13ef65890d82" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%205.png"><img style="width:768px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%205.png"/></a><figcaption>Blueprint d&#x27;une carte de film</figcaption></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="99ea2115-b80c-4cde-a6bb-130987e3890d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les vues d&#x27;un layout ont deux attributs obligatoires:<code> layout_width</code> et <code>layout_height</code> . 
+La valeur de ces attributes peut-être: 
+- Un dimension (en <code>dp</code> de préférences exemple: <code>layout_width=&quot;56dp&quot;</code> )
+- <code>wrap_content</code> : Android calcule la taille de vue minimale possible.
+- <code>match_parent</code> : la vue prend tout l&#x27;espace dans le parents.</div></figure><p id="90ac0c30-98cb-40ad-8159-d98156114ecc" class="">Pour faire la carte en elle-même, nous allons utiliser une <code>CardView</code></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2bbcfab7-cd7b-4e22-a9b8-c548b57d8a11"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em><code>CardView</code></em><em> vient de la librairie de material design de google qui a déjà été ajoutée dans le projet.
+(</em><em><a href="https://material.io/develop/android/docs/getting-started/">https://material.io/develop/android/docs/getting-started/</a></em><em>)</em></div></figure><p id="81a05375-aa8c-419f-be4c-e9e1d270853f" class="">Afin d&#x27;organiser les éléments au sein de cette <code>CardView</code>, nous allons utiliser des <code>LinearLayout</code>. Grâce à ce layout, il est possible d&#x27;aligner des vues de façon horizontales ou bien vertical.</p><pre id="78a18f3a-5665-4965-b36f-29ecef4362f4" class="code"><code>&lt;!-- VERTICAL --&gt;
+&lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+				android:orientation=&quot;vertical&quot;
+        &gt;
+	&lt;!-- VIEWS --&gt;
+&lt;/LinearLayout&gt;
+
+&lt;!-- HORIZONTAL --&gt;
+&lt;LinearLayout
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+				android:orientation=&quot;horizontal&quot;
+        &gt;
+	&lt;!-- VIEWS --&gt;
+&lt;/LinearLayout&gt;</code></pre><p id="ee5dfdf0-d502-49d9-84bb-260e8090bda4" class="">Pour les textes, nous allons utiliser des <code>TextView</code>. Le titre du film utilisera <code>android:textAppearance=&quot;@style/Headline6&quot;</code> , les label (date de sortie et genre)<code>android:textAppearance=&quot;@style/Label&quot;</code> et les valeurs de ces labels: <code>android:textAppearance=&quot;@style/Caption&quot;</code> .</p><p id="0d3628e9-ece3-45e3-b3ac-eedd4ba8854d" class="">Le texte affiché par les labels se trouve dans le fichier de resource <code>res/values/string.xml</code> . Pour les utiliser dans le layout, ajouter un attribut: <code>android:text=&quot;@string/&lt;nom de la ressource&gt;&quot;</code> .</p><p id="a7373e3d-0d3d-4fa8-b32d-3aeef2738ebc" class="">Pour les étoiles de la note du film, une <code>RatingBar</code>, sur laquelle on utilisera l&#x27;attribut <code>isIndicator=&quot;true&quot;</code> pour empêcher les utilisateurs de modifier le nombre d&#x27;étoiles.</p><div id="30124c43-c2a8-455f-b308-73dc22ef6442" class="collection-content"><h4 class="collection-title">Vues à ajouter dans le layout</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Vue</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>ID</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Type de vue</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Commentaire</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Variable</th></tr></thead><tbody><tr id="3316098a-9009-4cd3-b7c5-7683d3c9c2f7"><td class="cell-title"><a href="https://www.notion.so/Poster-3316098a90094cd3b7c57683d3c9c2f7">Poster</a></td><td class="cell-&lt;de@">movie_card_poster</td><td class="cell-s/[&gt;">ImageView</td><td class="cell-U\*u"></td><td class="cell-H52W">moviePoster</td></tr><tr id="95043b9a-aaec-434d-a722-bd2eb378be9f"><td class="cell-title"><a href="https://www.notion.so/Titre-95043b9aaaec434da722bd2eb378be9f">Titre</a></td><td class="cell-&lt;de@">movie_card_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W">movieTitle</td></tr><tr id="c45c727f-dc4f-4afc-b476-337f4ffaf3e9"><td class="cell-title"><a href="https://www.notion.so/toiles-c45c727fdc4f4afcb476337f4ffaf3e9">Étoiles </a></td><td class="cell-&lt;de@">movie_card_stars</td><td class="cell-s/[&gt;">RatingBar</td><td class="cell-U\*u">- Ajouter un style: <code>style=&quot;@style/Widget.AppCompat.RatingBar.Small&quot;;</code> 
+- Ajouter <code>android:isIndicator=&quot;true&quot;</code></td><td class="cell-H52W">movieRatingBar</td></tr><tr id="be151ca1-0d16-47a1-8058-dec4226fbad6"><td class="cell-title"><a href="https://www.notion.so/Note-be151ca10d1647a18058dec4226fbad6">Note</a></td><td class="cell-&lt;de@">movie_card_rating</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W">movieRating</td></tr><tr id="4e9db058-6b7e-42e7-9164-1b17e4e6472a"><td class="cell-title"><a href="https://www.notion.so/Label-de-date-de-sortie-4e9db0586b7e42e791641b17e4e6472a">Label de date de sortie</a></td><td class="cell-&lt;de@">movie_card_release_date_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W"></td></tr><tr id="3fce8ac3-cd26-427b-b537-5fe8b7c7764a"><td class="cell-title"><a href="https://www.notion.so/Date-de-sortie-3fce8ac3cd26427bb5375fe8b7c7764a">Date de sortie</a></td><td class="cell-&lt;de@">movie_card_release_date_value</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W">movieReleaseDateValue</td></tr><tr id="5ddc7cbb-b930-4611-81ad-8790d3e87df6"><td class="cell-title"><a href="https://www.notion.so/Label-du-genre-5ddc7cbbb930461181ad8790d3e87df6">Label du genre</a></td><td class="cell-&lt;de@">movie_card_genre_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W"></td></tr><tr id="8cd0e70f-a7a5-456b-9894-c164d777bd0a"><td class="cell-title"><a href="https://www.notion.so/Genre-8cd0e70fa7a5456b9894c164d777bd0a">Genre</a></td><td class="cell-&lt;de@">movie_card_genre_value</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W">movieGenreValue</td></tr><tr id="a503fca5-125e-457d-add2-5acdc833b5b3"><td class="cell-title"><a href="https://www.notion.so/Message-de-loading-a503fca5125e457dadd25acdc833b5b3">Message de loading</a></td><td class="cell-&lt;de@">discover_message</td><td class="cell-s/[&gt;">TextView</td><td class="cell-U\*u"></td><td class="cell-H52W">discoverMessage</td></tr><tr id="6755c7b4-fd55-4dc9-b5e1-8fcb2896d80a"><td class="cell-title"><a href="https://www.notion.so/Carte-6755c7b4fd554dc9b5e18fcb2896d80a">Carte</a></td><td class="cell-&lt;de@">movie_card</td><td class="cell-s/[&gt;">CardView</td><td class="cell-U\*u"></td><td class="cell-H52W">movieCard</td></tr></tbody></table></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="42fe27f0-3109-4e13-a5ff-6dfe7ed28298"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Ouvrir le layout <code>item_movie</code> dans le dossier <code>app/res/layout</code>. 
+La vue sera composée d&#x27;une <code>CardView</code> parente dans laquelle se trouvera un premier <code>LinearLayout</code> horizontal qui contiendra le poster et un second <code>LinearLayout</code> vertical qui contiendra les autres vues.
+Pour le poster, il est possible d&#x27;utiliser l&#x27;image <code>joker.png</code> mise à disposition.
+
+Dans le layout <code>activity_discover</code>, ajouter <code>&lt;include layout=&quot;@layout/item_movie&quot; /&gt;</code> au dessus de la vue <code>discoverMessage</code> et ajouter <code>android:visibility=&quot;gone&quot;</code> sur la vue <code>discoverMessage</code>.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6b850ea5-9231-401a-be97-8bc010bd48c0"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Lancer l&#x27;application.</div></figure><ul id="1bbba388-07b5-4233-a64f-9ea907e729c5" class="toggle"><li><details open=""><summary>Résultat</summary><figure id="961b0706-2657-44d8-83b4-3acc9db57712" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%206.png"><img style="width:288px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Untitled%206.png"/></a></figure></details></li></ul><h2 id="175e9588-a37a-4624-9371-42e100f677f4" class="">2. Afficher les données des films dans la carte créée</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ba286796-4cba-4384-821f-5cf75e084f35"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step2.0</code></div></figure><p id="2f22280d-b791-4d8b-a7fe-48e11c2b4ded" class="">Pour l&#x27;instant, les données affichées sont en dur dans le layout. 
+<strong>Le but de cette partie sera de récupérer les vues de la carte de film dans l&#x27;activité et d&#x27;y mettre les valeurs venant d&#x27;un objet </strong><strong><code>Movie</code></strong><strong>.</strong></p><h3 id="545f3cbe-7632-4627-a5bd-3b10c7ea1148" class="">Récupérer les vues d&#x27;un layout</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="92d4c7f1-6c0d-4365-9b0f-38e5f9f101b6"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour récupérer une vue venant d&#x27;un layout dans une activité, il faut utiliser la méthode <code>findViewById</code> qui permet de rechercher une vue avec un certain id dans toute la hiérarchie de la vue utilisée par notre activité avec <code>setContentView</code>.
+https://developer.android.com/reference/android/app/Activity#findViewById(int)
+<mark class="highlight-orange">mentionner R.id. ?</mark></div></figure><p id="6e23b93f-7ad3-4548-bfd5-227503d8d68f" class="">dGV</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fa59515e-afc6-46cd-ab1c-a438998fbb22"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Dans la classe <code>DiscoverActivity</code>, créer des variables permettant de récupérer les différentes vues de notre carte film (poster, note, étoiles, titre, genre, etc).  
+Initialiser ces variables après l&#x27;appel à <code>setContentView</code>.</div></figure><p id="a01235e6-3320-466d-9ec0-fec7f92e3fca" class="">Pour rappel sur les types de vue:</p><div id="8fe386d7-edb2-45fb-9ba2-4d56413b34ce" class="collection-content"><h4 class="collection-title">Vues à ajouter dans le layout</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Vue</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>ID</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Type de vue</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Variable</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Commentaire</th></tr></thead><tbody><tr id="8cd0e70f-a7a5-456b-9894-c164d777bd0a"><td class="cell-title"><a href="https://www.notion.so/Genre-8cd0e70fa7a5456b9894c164d777bd0a">Genre</a></td><td class="cell-&lt;de@">movie_card_genre_value</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W">movieGenreValue</td><td class="cell-U\*u"></td></tr><tr id="5ddc7cbb-b930-4611-81ad-8790d3e87df6"><td class="cell-title"><a href="https://www.notion.so/Label-du-genre-5ddc7cbbb930461181ad8790d3e87df6">Label du genre</a></td><td class="cell-&lt;de@">movie_card_genre_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W"></td><td class="cell-U\*u"></td></tr><tr id="3fce8ac3-cd26-427b-b537-5fe8b7c7764a"><td class="cell-title"><a href="https://www.notion.so/Date-de-sortie-3fce8ac3cd26427bb5375fe8b7c7764a">Date de sortie</a></td><td class="cell-&lt;de@">movie_card_release_date_value</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W">movieReleaseDateValue</td><td class="cell-U\*u"></td></tr><tr id="4e9db058-6b7e-42e7-9164-1b17e4e6472a"><td class="cell-title"><a href="https://www.notion.so/Label-de-date-de-sortie-4e9db0586b7e42e791641b17e4e6472a">Label de date de sortie</a></td><td class="cell-&lt;de@">movie_card_release_date_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W"></td><td class="cell-U\*u"></td></tr><tr id="be151ca1-0d16-47a1-8058-dec4226fbad6"><td class="cell-title"><a href="https://www.notion.so/Note-be151ca10d1647a18058dec4226fbad6">Note</a></td><td class="cell-&lt;de@">movie_card_rating</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W">movieRating</td><td class="cell-U\*u"></td></tr><tr id="c45c727f-dc4f-4afc-b476-337f4ffaf3e9"><td class="cell-title"><a href="https://www.notion.so/toiles-c45c727fdc4f4afcb476337f4ffaf3e9">Étoiles </a></td><td class="cell-&lt;de@">movie_card_stars</td><td class="cell-s/[&gt;">RatingBar</td><td class="cell-H52W">movieRatingBar</td><td class="cell-U\*u">- Ajouter un style: <code>style=&quot;@style/Widget.AppCompat.RatingBar.Small&quot;;</code> 
+- Ajouter <code>android:isIndicator=&quot;true&quot;</code></td></tr><tr id="95043b9a-aaec-434d-a722-bd2eb378be9f"><td class="cell-title"><a href="https://www.notion.so/Titre-95043b9aaaec434da722bd2eb378be9f">Titre</a></td><td class="cell-&lt;de@">movie_card_title</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W">movieTitle</td><td class="cell-U\*u"></td></tr><tr id="3316098a-9009-4cd3-b7c5-7683d3c9c2f7"><td class="cell-title"><a href="https://www.notion.so/Poster-3316098a90094cd3b7c57683d3c9c2f7">Poster</a></td><td class="cell-&lt;de@">movie_card_poster</td><td class="cell-s/[&gt;">ImageView</td><td class="cell-H52W">moviePoster</td><td class="cell-U\*u"></td></tr><tr id="a503fca5-125e-457d-add2-5acdc833b5b3"><td class="cell-title"><a href="https://www.notion.so/Message-de-loading-a503fca5125e457dadd25acdc833b5b3">Message de loading</a></td><td class="cell-&lt;de@">discover_message</td><td class="cell-s/[&gt;">TextView</td><td class="cell-H52W">discoverMessage</td><td class="cell-U\*u"></td></tr><tr id="6755c7b4-fd55-4dc9-b5e1-8fcb2896d80a"><td class="cell-title"><a href="https://www.notion.so/Carte-6755c7b4fd554dc9b5e18fcb2896d80a">Carte</a></td><td class="cell-&lt;de@">movie_card</td><td class="cell-s/[&gt;">CardView</td><td class="cell-H52W">movieCard</td><td class="cell-U\*u"></td></tr></tbody></table></div><h3 id="86323db9-cf84-462d-beab-4f4a56c219fd" class="">Afficher du contenues dans des vues</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7e7369d6-f6f7-42e6-b736-d90dfd6b5fe9"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step2.2</code></div></figure><p id="41bc5e3d-2af2-498c-b162-ebe1561ce42c" class="">Maintenant que les vues ont bien été récupérées, il reste à récupérer un object <code>Movie</code> à afficher. Pour cela utiliser la classe <code>DiscoverPresenter</code>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7a3c9e96-145c-415b-a156-48153583b4c6"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Tout d&#x27;abord, il faut implémenter l&#x27;interface <code>DiscoverViewContract</code> et override ses méthodes dans <code>DiscoverActivity</code>:
+1. <code>showLoading</code>: afficher le message <code>R.string.loading</code> dans la vue <code>R.id.discoverMessage</code>, puis changer sa visibilité (<code>setVisibility</code> ) à <code>View.VISIBLE</code> et celle de la carte film à <code>View.GONE</code>.
+2. <code>showContent</code>: afficher les différentes propriétés du paramètre <code>Movie</code> dans les vues correspondantes puis changer sa visibilité à <code>View.VISIBLE</code> et celle du message à <code>View.GONE</code>
+3. <code>showError</code>: afficher le message en paramètre dans la vue <code>R.id.discoverMessage</code>, puis changer sa visibilité (<code>setVisibility</code> ) à <code>View.VISIBLE</code> et celle de la carte film à <code>View.GONE</code>.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="18ecc918-2f94-4f1e-a00f-afeaef6b2451"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">- Pour afficher l&#x27;image dans le poster, utiliser <code>Picasso.get().load(model.getPosterPath()).into(moviePoster);</code> . Picasso permet de charger des images dans des <code>ImageView</code> .
+- Pour mettre du texte dans une <code>TextView</code>, utiliser la méthode <code>setText(&lt;text&gt;)</code> .
+- Pour mettre en forme la date de sortie, utiliser <code>DateUtils.formatDate(&lt;date&gt;)</code> qui formate la date en chaîne de caractères
+- Pour mettre le nombre d&#x27;étoile de la <code>RatingBar</code>, utiliser le méthode <code>setRating(&lt;note&gt;)</code></div></figure><p id="07168984-1a1d-452f-9b7b-79bf026b4ab4" class="">Il faut maintenant récupérer et initialiser le <code>DiscoverPresenter</code>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9bde95ca-b91c-47f2-9403-9e27836ba98b"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans la <code>DiscoverActivity</code>, créer une variable de type <code>DiscoverPresenter</code> initialisée dans le <code>onCreate</code> en utilisant la méthode statique <code>getInstance(this)</code>. (<em>cela permet de ne pas exposer le repository à la vue</em>)
+2. Dans la méthode <code>onStart</code> appeler la méthode <code>start</code> du presenter en lui passant le view contract (<strong>ici </strong><strong><code>this</code></strong><strong> puisque notre activité implémente ce dernier</strong>).
+3. Dans la méthode <code>onStop</code>, juste avant l&#x27;appel à <code>super.onStop()</code>, appeler la méthode <code>stop</code> du présenter. Cela permet, à la vue de ne pas être mise à jour lorsqu&#x27;elle n&#x27;est plus visible.</div></figure><h3 id="8130e215-3eb1-40eb-8f75-b8796da9aeb1" class="">Récupérer un film dans le repository</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b889a9d3-931b-4eb8-9557-dc03c4be8ca3"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step2.3</code></div></figure><p id="42bda3eb-c835-45e9-bee5-677485a51dfc" class="">Le <code>MovieRepository</code> fourni permet de récupérer un film. Pour l&#x27;instant, le film est déclaré en dur dans le repository. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="32e5b7e4-6b2a-4ec4-b1dc-bcb83f01b041"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour récupérer un film à l&#x27;aide du <code>MovieRepository</code>, l&#x27;utilisation d&#x27;un callback est nécessaire. En effet, la récupération d&#x27;un film est asynchrone et il faut attendre d&#x27;obtenir le résultat pour l&#x27;afficher.
+Le callback est ici déclaré dans l&#x27;interface <code>GetMovieCallback</code> qui comporte deux méthodes <code>onGetMovie</code> lorsque le film a été récupéré et <code>onError</code> en cas d&#x27;erreur.
+Le repository va récupérer les films en utilisant le thread Network I/O puis appeler le callback sur le main thread.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c6316603-48f2-4bc7-96d2-034faaa0e924"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Dans la méthode <code>start</code> du presenter: 
+1. Afficher l&#x27;écran de chargement du view contract
+2. Dans l&#x27;attribut <code>movieCallback</code> de type <code>GetMovieCallback</code> et appeler respectivement <code>showContent</code> et <code>showError</code> en cas de succès (<code>onGetMovie</code>) et d&#x27;erreur (<code>onError</code>).
+3. Récupérer le film avec le repository: <code>movieRepository.getMovie(movieCallback)</code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="71c8c843-8e3b-4618-881e-6a0a89628a25"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Lancer l&#x27;application.</div></figure><h2 id="ca78f818-3368-484c-9a14-85d8660d3f1a" class="">3. Afficher une liste de films</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="961b774c-df0f-485f-bb63-1d32fc2cbd26"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step3.0</code></div></figure><p id="755c640b-b22c-4b9b-b372-b64167b0e151" class="">Pour l&#x27;instant, le layout qu&#x27;on a mis en place ne supporte que l&#x27;affichage d&#x27;une seule carte de film.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7f8cbec4-8628-4744-8be6-a8ff7450c9e6"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour pouvoir afficher une liste de films de n&#x27;importe quelle taille, on va utiliser l&#x27;incontournable <code>RecyclerView</code>
+<a href="https://developer.android.com/guide/topics/ui/layout/recyclerview">https://developer.android.com/guide/topics/ui/layout/recyclerview</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8eab68f0-38f5-4ae7-a451-eed7128f4143"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans le fichier <code>app/res/layout/activity_discover.xml</code>, remplacer le bloc qui permettait d&#x27;afficher la carte de film (<code>&lt;include layout&quot;@layout/item_movie&quot;&gt;</code>)par une <strong>RecyclerView </strong>avec l&#x27;id <code>movie_recycler</code> .
+2. Faites les changements nécessaires dans la classe <code>DiscoverActivity</code> pour récupérer la <strong>RecyclerView</strong> dans l&#x27;activité, et ensuite gérer sa visibilité en fonction de l&#x27;état de la vue : loading, content, etc.
+Si besoin, se référer à la section <a href="https://developer.android.com/guide/topics/ui/layout/recyclerview#workflow">Add RecyclerView to your layout</a>.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5aee6f32-7a83-4895-a439-d0e85400aff1"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Commenter le code permettant de mettre les données dans la carte de film afin de pouvoir le réutiliser après dans le <code>ViewHolder</code></div></figure><h3 id="1b9b2b14-4d5d-4fa5-9cb0-4dcbba34f9d7" class="">Passer la liste de films à la RecyclerView</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9849f71c-f643-485d-8224-19ea88a616dd"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step3.1</code></div></figure><p id="4969f4c4-55f1-4503-ae02-ffe3bdd1ac1f" class="">Pour pouvoir fonctionner, une RecyclerView s&#x27;utilise toujours avec un <code>Adapter</code> qui gère la liste des éléments à afficher. L&#x27;<code>Adapter</code> a à son tour besoin d&#x27;un <code>ViewHolder</code> qui lui gère l&#x27;affichage d&#x27;un élément de la liste. Par souci d&#x27;efficacité, ces 2 classes vous ont été fournies et sont prêtes à être utilisées. Quand on implémente une recycler view pour la première fois, on peut avoir un peu de mal à comprendre comment tout cela fonctionne, voici donc quelques explications :</p><h3 id="5cfae8c7-348b-4981-a796-f9bc9b609458" class="">L<strong>e ViewHolder</strong></h3><p id="ef18b452-e4c3-401f-ad46-100110567017" class="">Un view holder a simplement pour but de gérer  l&#x27;affichage d&#x27;un élément de la liste. Si vous jetez un coup d&#x27;oeil sur la classe  <code>MovieViewHolder</code>, vous verrez que son constructeur prend en paramètre une <code>View</code>. Cette vue correspond à une carte de film, et en appelant la méthode <code>findViewById</code> du paramètre <code>itemView</code> avec les bons ids, on récupère séparément des références sur les vues contenues dans la carte : la <code>TextView</code> qui affiche le titre, l&#x27;<code>ImageView</code> qui contient le poster, etc. Ces références sont utilisées plus tard dans la méthode <code>bind()</code> pour alimenter chaque carte de film avec les données d&#x27;un élément de la liste. C&#x27;est là qu&#x27;entre en jeu l&#x27;<code>Adapter</code>.</p><h3 id="7135ae30-5373-4709-ae29-5631c3b6d874" class="">L<strong>&#x27;Adapter</strong></h3><p id="acb4b321-0fe9-4b20-a473-f664105b5e76" class="">Un adapter a pour rôle de faire le lien entre une liste d&#x27;objets de type <code>Movie</code> et les ViewHolders qui vont afficher chacun des éléments de la liste. Si vous jetez un coup d&#x27;oeil sur la classe <code>MoviesAdapter</code>, vous verrez qu&#x27;il contient les éléments suivants :</p><ul id="782492ac-ca1f-4f91-a776-0f74a6c48d41" class="bulleted-list"><li>un attribut de type <code>List&lt;Movie&gt;</code> dataSet qui permet de stocker la liste de films.</li></ul><ul id="9492c0f3-ae87-4a74-96f1-12f5498a905b" class="bulleted-list"><li>une méthode <code>onCreateViewHolder(@NonNull ViewGroup parent, int viewType)</code> qui sert, comme son nom l&#x27;indique, à créer un ViewHolder, et donc à inflate le bon layout pour un élément de la liste en particulier. La vue à afficher dans le <code>MovieViewHolder</code> est celle contenue dans le layout <code>item_movie</code>.</li></ul><ul id="075a7ed7-9bd3-4355-82f9-a5775219e405" class="bulleted-list"><li>une méthode <code>onBindViewHolder(@NonNull MovieViewHolder holder, int position)</code> qui permet de passer un objet de type <code>Movie</code> à un <code>MovieViewHolder</code>.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="774776d1-de94-4032-906a-4fe742029cd8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Un recycler view peut supporter une liste composée d&#x27;éléments construits via des layouts différents (par exemple, si on veut afficher les films par catégorie on peut ajouter des cartes &quot;catégorie&quot; au début de chaque section), d&#x27;où le paramètre <code>viewType</code> qui nous aurait permis de choisir le layout et la classe du ViewHolder en fonction de l&#x27;élément à afficher.</div></figure><h3 id="95fcbafd-1623-4143-aa5f-76dae3f7a035" class="">Récupérer une liste de films dans le repository</h3><p id="82f2aaee-9669-4ab6-b7ab-0a8d1bc843eb" class="">Pour tester notre recycler view, utiliser la méthode <code>getMovies()</code> de <code>MovieRepository</code> (qui retourne une liste de 3 films) à la place de <code>getMovie()</code> dans le presenter. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="53257e31-295e-40f9-a693-dd157cc7829c"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Faites les changements nécessaires sur la méthode <code>showContent()</code> (dans <code>DiscoverViewContract</code> et <code>DiscoverActivity</code>).
+Dans <code>DiscoverPresenter</code> remplacez le <code>GetMovieCallback</code> par <code>GetMoviesCallback</code> pour récupérer une liste de film.</div></figure><h3 id="2f7dd944-aaf9-47a7-a772-5edc028b9279" class="">Passer la liste à l&#x27;Adapter</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6120a394-21cc-43b3-a41b-3a82206f720a"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans la classe <code>DiscoverActivity</code>, déclarer un attribut de type <code>MoviesAdapter</code> et le relier à la recycler view en utilisant la méthode <code>setAdapter(Adapter adapter)</code> de la classe <code>RecyclerView</code>.
+2. Dans la méthode <code>showContent</code> de <code>DiscoverActivity</code>, transmettre la liste reçue en paramètre à l&#x27;Adapter via <code>submitList()</code>.</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7fd37ca-412b-4b30-8ec9-de8ba8c13c62"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Lancer l&#x27;application.</div></figure><ul id="2ffeda4c-ca8d-41f8-83d0-c4b410ec70f6" class="toggle"><li><details open=""><summary>Résultat</summary><figure id="706dcd2b-785b-4b64-9a36-8d8c24783d66" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/list.png"><img style="width:240px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/list.png"/></a></figure></details></li></ul><h2 id="738187fc-12c8-41be-8d4b-e73ccfb90c0f" class="">4. Utiliser une API pour chercher les films à afficher</h2><p id="33e19e45-7478-41e2-8516-2aa6b202765f" class="">Comme vous vous en doutez, écrire nous même la liste des films à afficher n&#x27;a pas trop d&#x27;intérêt. Pour que notre application devienne vraiment utile, on va se servir de la base de données (non-officielle) disponible ici  <a href="https://www.themoviedb.org/?language=en-US">The Movie Database (TMDb)</a> Plus précisément, on va utiliser l&#x27;API REST qui expose différents endpoints qui permettent d&#x27;interroger la base de données de différentes manières. La documentation exhaustive de cette API est disponible ici <a href="https://developers.themoviedb.org/3/getting-started">https://developers.themoviedb.org/3/getting-started</a></p><p id="a782032a-f0b5-4116-8476-78bfc6dc5a64" class="">
+</p><h3 id="c2502f03-8cca-42c6-b453-05b2b3c66d8e" class="">Découvrir l&#x27;API</h3><p id="501c0d56-0944-48ec-a0a2-73acca74062a" class="">Avant de l&#x27;intégrer dans le code de notre application, il est pertinent de prendre quelques minutes pour interagir avec L&#x27;API et comprendre son fonctionnement.
+Pour ce dojo, le endpoint <code>/discover/movie</code> suffit à notre besoin. Ce endpoint renvoie une liste de films qui correspond à la combinaison de filtres (paramètres) spécifiée dans la requête qu&#x27;on lui envoie.
+<mark class="highlight-gray"><em>L&#x27;accès à l&#x27;API se fait à l&#x27;aide une clé d&#x27;API qu&#x27;il faut insérer dans chaque requête à l&#x27;aide du paramètre </em></mark><mark class="highlight-red"><code><strong>api_key</strong></code></mark><mark class="highlight-gray"><em>.</em></mark></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4b9679ea-305f-418e-b021-ec61be58dd71"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour plus d&#x27;informations sur les moyens d&#x27;authentification à l&#x27;API, consulter la page <a href="https://developers.themoviedb.org/3/getting-started/authentication">https://developers.themoviedb.org/3/getting-started/authentication</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d414c24c-bf6a-47f1-9fc9-bcc29dd61684"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Consulter cette page de la doc <a href="https://www.themoviedb.org/documentation/api/discover">https://www.themoviedb.org/documentation/api/discover</a> qui illustre certains paramètres de requête qu&#x27;on peut utiliser avec le endpoint <code>/discover/movie</code> pour restreindre la liste de films qu&#x27;on récupère
+2. Cette page <a href="https://developers.themoviedb.org/3/discover/movie-discover">https://developers.themoviedb.org/3/discover/movie-discover</a> (onglet : <strong>Try it out</strong>) permet d&#x27;interagir avec le endpoint simplement, en insérant des paramètres dans un formulaire. Envoyer une ou deux requêtes et vérifier que la réponse (en format <strong>json</strong>) est cohérente (ne pas oublier de renseigner la clé d&#x27;api)
+3. Quelles sont les 3 combinaisons de paramètres qui nous permettront de récupérer les 3 listes de films à afficher dans les 3 onglets de l&#x27;app ?</div></figure><p id="2aa2deaa-02c1-4a17-a09b-fb1e63238749" class="">
+</p><h3 id="2b1476a2-5b2e-41bb-833e-f77867cc630b" class="">Compléter la définition de l&#x27;API</h3><p id="dbdc4872-6a95-457d-87a0-9ae75240128d" class="">Pour faciliter l&#x27;envoi de requêtes et la réception des réponses, la librairie <strong>Retrofit</strong> est très pratique. Vous pouvez jeter un coup d&#x27;oeil sur la la page web de <a href="https://square.github.io/retrofit/">Retrofit</a> pour voir comment ça marche (principalement les sections <em>Introduction, REQUEST METHOD, </em>et<em> URL MANIPULATION</em>)</p><p id="23c164a8-53d6-4f22-8425-89518680ca9c" class="">Retrofit est un client REST qui facilite l&#x27;échange avec une API REST. Pour pouvoir s&#x27;en servir, il faut déclarer une interface qui décrit les requêtes qu&#x27;on va faire auprès de l&#x27;API. Chaque requête se traduit par un prototype de méthode, annotée du type de requête (<code>@GET</code>, <code>@POST</code>, etc). L&#x27;annotation prend en paramètre le &quot;path&quot; de la requête <strong>sans la base url</strong>. On vous a fourni l&#x27;interface (<code>MovieApi</code>) avec la méthode suivante que nous utiliserons pour chercher les films qui vont sortir bientôt :</p><pre id="53f468da-8366-4dcd-a7ff-a40157751bd4" class="code"><code>@GET(&quot;/3/discover/movie&quot;)
+Call&lt;RestDiscoverResponse&gt; discoverMovies(
+    @Query(&quot;api_key&quot;) String apiKey,
+    @Nullable @Query(&quot;primary_release_date.gte&quot;) String fromDate,
+    @Nullable @Query(&quot;primary_release_date.gte&quot;) String toDate,
+    @Nullable @Query(&quot;primary_release_year&quot;) Integer year,
+    @Query(&quot;language&quot;) String language
+);</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="286d7532-dab7-4d92-8c6e-27cfc8e8f170"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">* la fameuse <strong>base url</strong> qu&#x27;on a évoquée ci-haut est définie dans la classe <code>Network.java</code>. Comme son nom l&#x27;indique, c&#x27;est le commencement du path de toutes les requêtes de l&#x27;API.
+* le path de la requête <code>&quot;/3/discover/movie&quot;</code> commence par <code>/3</code> pour choisir la version n°3 de l&#x27;API qui permet de s&#x27;authentifier via une clé d&#x27;API
+* Il y a différentes façons de communiquer ses paramètres de requête à l&#x27;API. Ici on envoie la clé d&#x27;API, la date minimum de sortie, et la langue du film sous forme de <strong>@Query</strong> params comme indiqué par la doc du endpoint.
+* Comme type de retour nous avons indiqué <code>Call&lt;RestDiscoverResponse&gt;</code>. RestDiscoverResponse est le <strong>modèle</strong> qu&#x27;on reçoit du serveur. On a besoin de définir les modèles qu&#x27;on échange avec l&#x27;API parce que structurellement parlant, ils ne correspondent pas forcément aux entités qu&#x27;on manipule dans le code, d&#x27;où la définition d&#x27;un modèle <code>RestMovie</code> par exemple. Dans cette classe, nous avons fait appel à l&#x27;annotation <code>@SerializedName(...)</code> pour indiquer l&#x27;appellation du champ dans le Json renvoyé par l&#x27;API, et qui peut différer de la façon dont on a appelé notre champ dans le code.</div></figure><h3 id="057a96ad-cb90-4910-b050-7deffaedbaf0" class="">Compléter le repository</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d491c767-a05e-469b-ae7f-bcfbe1b153e0"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step4.1</code></div></figure><p id="83139572-488b-47c6-b15a-519bb3b43875" class="">Le <code>MovieRepository</code> qu&#x27;on a actuellement nous renvoie des &quot;mocks&quot;, c&#x27;est à dire des données stockées actuellement. Dans cette partie, on va remplacer ces mocks par des films récupérés via l&#x27;API. Pour ce faire, le repository va maintenant appeler les méthodes qu&#x27;on vient de définir dans l&#x27;API. Comme vous pouvez le constater, ces méthodes retournent une variable de type <code>Call&lt;type du résultat&gt;</code>. C&#x27;est seulement en appelant la méthode <code>execute()</code> de cette variable de type <code>Call</code> que la requête est réellement envoyée et si aucune exception I/O n&#x27;est levée, on récupère un objet de type <code>Response&lt;type du résultat&gt;</code>. Cet objet a une méthode <code>isSuccessful()</code> qui nous permet de savoir si le serveur a réussi à bien interpréter notre requête et nous a renvoyé une réponse 200. Dans ce cas on peut récupérer le contenu de la réponse via la méthode <code>body()</code> de l&#x27;objet <code>Response</code> qu&#x27;on a reçu.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="68cd992b-4874-46bd-81db-1142f732bc99"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans la classe <code>MovieRepository</code>, utiliser la méthode <code>discoverMovies</code> de <code>MovieApi</code> avec les bons paramètres dans les méthodes <code>getUpcomingMovies</code>, <code>getTopMoviesOfTheYear</code> et <code>getMoviesInTheatre</code>  .
+2. Décommenter le <code>dispatchSuccess</code> dans la méthode fetchMovieList
+3. Adapter le code de <code>DiscoverPresenter</code> pour qu&#x27;au lancement il demande au repository de chercher les films qui sont dans les salles de cinéma en ce moment.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="e769c9c5-3a1d-4ca0-9c8c-d82d9ba1ff10"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Ici la clef d&#x27;API est écrite en claire dans le code de l&#x27;application. Ce n&#x27;est pas une pratique recommander car il est facile pour un acteur malveillant de décompiler l&#x27;application et d&#x27;utiliser cette clef. </div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="125b796f-aab0-4dce-a329-fa268567d873"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Lancer l&#x27;application.</div></figure><ul id="bbfda054-dcd0-4268-aa32-c37f03e69aca" class="toggle"><li><details open=""><summary>Résultat</summary><p id="3fdeb19c-30d3-4040-86fd-04c2148bb4c9" class="">Si tout s&#x27;est bien passé, vous aurez une longue liste de films renvoyée par le serveur ! S&#x27;il y a un problème quelconque, c&#x27;est probablement dû à une erreur serveur ou à une requête mal formatée. Pour vous faciliter l&#x27;identification de la cause des éventuels problèmes, l&#x27;intercepteur graphique de requêtes HTTP <a href="https://github.com/jgilfelt/chuck"><strong>Chuck</strong></a> a été attaché à Retrofit (d&#x27;où les 2 petites flèches en haut à gauche de l&#x27;écran). Cet outil vous permettra de voir ce que vous envoyer à l&#x27;API et ce qu&#x27;elle vous renvoie.</p><figure id="163d5f12-9614-4c54-af39-8ed568865220" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/fetch.png"><img style="width:240px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/fetch.png"/></a></figure></details></li></ul><p id="807b91d5-4f8c-4eb8-a335-b0407e855ab9" class="">
+</p><h3 id="176f4934-be50-43c4-bc43-09c5ff1bf20f" class="">Compléter le layout avec les 3 onglets</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9a62e7e6-9cb8-4a5f-a0e3-890108e93c44"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step4.2</code></div></figure><p id="1cffd628-b0ad-433f-97b0-90b7679d7076" class="">Le but de cette partie est de rajouter ces 3 onglets pour pouvoir naviguer entre les différentes listes :</p><figure id="456b23ff-ee83-4d30-a360-05191943e265" class="image"><a href="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Screen_Shot_2020-02-10_at_13.27.47.png"><img style="width:480px" src="E%CC%81tapes%20du%20Dojo%20a5585c806b804fafb833966745df9039/Screen_Shot_2020-02-10_at_13.27.47.png"/></a></figure><p id="cc05a031-9d9e-4137-8b15-20f83945af88" class="">
+</p><p id="234c4ab0-f403-426a-8a32-dd5c1438f990" class="">Pour cela, on va utiliser un <a href="https://developer.android.com/reference/com/google/android/material/tabs/TabLayout"><strong>TabLayout</strong></a>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="51fba7a8-60e3-477c-81c3-af89d790e7f7"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans <code>activity_discover.xml</code>, rajouter un <code>TabLayout</code> en ajustant bien les contraintes pour qu&#x27;il apparaisse en haut de l&#x27;écran.
+(on pourra par exemple mettre les vues actuellement dans un frame layout puis mettre ce frame layout sous les tabs à l&#x27;aide d&#x27;un linear layout)
+2. Rajouter 3 <code>TabItem</code> dans le <code>TabLayout</code> de manière à afficher 3 onglets. Pour attribuer à chaque onglet son titre, utiliser l&#x27;attribut <code>android:text</code>
+3. Le titre de l&#x27;onglet du milieu est dynamique puisqu&#x27;il contient l&#x27;année en cours. Il faut donc lui donner une valeur &quot;programmatiquement&quot; (dans le code Java). Pour cela récupérer la vue correspondant au <code>TabLayout</code> dans <code>DiscoverActivity</code>, et récupérer ensuite l&#x27;onglet du milieu via la méthode <code>getTabAt</code> de la classe <code>TabLayout</code>. Enfin, utiliser une ressource de type <code>string</code> avec un argument. Pour ce faire, jeter un coup d&#x27;oeil à la section <a href="https://developer.android.com/guide/topics/resources/string-resource#formatting-strings"><em>Formatting strings</em></a>.</div></figure><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="800e7d4c-b6cc-4093-a509-bc43bf3ab5d7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Dans un <code>LinearLayout</code>, <code>layout_weight</code> permet de donner un poids aux vues afin qu&#x27;elle prenne le plus de poids possible. </div></figure><h3 id="4eabbddd-cef1-4f4b-8981-a73c789e54c7" class="">Gestion des clicks sur les onglets</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f1d0b5b6-805b-4cd5-a31e-31abe1b2b482"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step4.3</code></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="52f0a4df-931c-4cc3-9ab5-1bc0b0cddea3"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">1. Dans <code>DiscoverActivity</code>, utiliser la méthode <code>addOnTabSelectedListener</code> de la classe TabLayout pour définir un <em>listener</em> sur vos onglets. Ce listener est une interface que l&#x27;on doit implémenter. Laissez-vous guider par les indications et les raccourcis d&#x27;Android Studio pour générer le code minimum de l&#x27;implémentation de cette interface.
+2. La méthode qui nous intéresse le plus est <code>onTabSelected</code>, on peut laisser les 2 autres méthodes vides. <code>onTabSelected</code> prend en paramètre l&#x27;onglet qui vient d&#x27;être cliqué. Récupérer l&#x27;indice de cet onglet via <code>getPosition()</code> et en fonction de cet indice, appeler la bonne méthode du presenter pour déclencher la récupération de la bonne liste de films.</div></figure><ul id="b0b83632-8f9c-4cef-9761-89e778772830" class="toggle"><li><details open=""><summary>Bonus</summary><h2 id="0a82487b-dcea-44db-bcad-a908e717e87b" class="block-color-gray">5. Ajout d&#x27;un film en favori 🃏</h2><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="e2ce76ed-e401-419c-8cf9-787cbd23330e"><div style="font-size:1.5em"><span class="icon">⏲</span></div><div style="width:100%">Si tu as pris du retard: <code>git stash -a &amp;&amp; git checkout step5.0</code></div></figure><h2 id="f6f9ef08-4a7c-4cda-b581-afa7a7765a68" class="block-color-gray">6. Affichage de la liste des favoris 🃏</h2></details></li></ul></div></article></body></html>

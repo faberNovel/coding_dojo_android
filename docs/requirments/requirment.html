@@ -1,0 +1,630 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Étapes préliminaires</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bbd828e6-5cc5-44e8-88da-5b719455c159" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔨</span></div><h1 class="page-title">Étapes préliminaires</h1></header><div class="page-body"><h2 id="dd8eda14-296e-4296-bb9e-303a7dd7e823" class="">Télécharger et installer Android Studio</h2><h3 id="2924f2d9-eae0-4ba2-b29c-b02a9abca21b" class="">Téléchargement</h3><figure id="19808df4-fd52-4d67-938c-6c5ac4053406"><a href="https://developer.android.com/studio/?gclid=CjwKCAiA1L_xBRA2EiwAgcLKA5Ax1t7sUaOcnKnv9vX8k6WtE7nH06NFHiEhiVATWu54Lxj8a9HEhxoC-csQAvD_BwE" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download Android Studio and SDK tools | Android Developers</div><div class="bookmark-description">Platform Android Studio package Size SHA-256 checksum Windows(64-bit) android-studio-ide-191.6010548-windows.exe Recommended 718 MB 58b3728fc414602e17fd9827e5ad0c969e5942aff1ee82964eedf1686450265b android-studio-ide-191.6010548-windows.zip No .exe installer 721 MB d88d640b3444f0267d1900710911ca350db6ca27d07466039e25caf515d909fe Windows(32-bit) android-studio-ide-191.6010548-windows32.zip No .exe installer 721 MB 2786400eb2f5d9ccbe143fe02d4e711915c83f95a335e609a890e897775195b7 android-studio-ide-191.6010548-mac.dmg 733 MB 6cb545c07ab4880513f47575779be7ae53a2de935435f8f22eb736ef72ecdf6e Linux(64-bit) android-studio-ide-191.6010548-linux.tar.gz 738 MB af630d40f276b0d169c6ac8c7663a989f562b0ac48a1d3f0d720f5b6472355db Chrome OS android-studio-ide-191.6010548-cros.deb 620 MB 87ca5f17f808ecb909e62c80da3e578156563309ca24f0b820064cc786d1360f See the Android Studio release notes.</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/v0e4e104495105e7f1e0709003bc8740507426db77c74cec8d9625a7c35862984/android/images/favicon.png" class="icon bookmark-icon"/>https://developer.android.com/studio/?gclid=CjwKCAiA1L_xBRA2EiwAgcLKA5Ax1t7sUaOcnKnv9vX8k6WtE7nH06NFHiEhiVATWu54Lxj8a9HEhxoC-csQAvD_BwE</div></div><img src="https://developer.android.com/studio/images/studio-homepage-hero.jpg" class="bookmark-image"/></a></figure><h3 id="c484bf98-0947-425d-916f-db63cadc688e" class="">Installation</h3><figure id="f8761483-9d59-4045-a969-5fb683140f75"><a href="https://developer.android.com/studio/install" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Install Android Studio | Android Developers</div><div class="bookmark-description">Setting up Android Studio takes just a few clicks. First, be sure you download the latest version of Android Studio. To install Android Studio on Windows, proceed as follows: If you downloaded an .exe file (recommended), double-click to launch it.If you downloaded a .zip file, unpack the ZIP, copy the android-studio folder into your Program Files folder, and then open the android-studio &gt; bin folder and launch studio64.exe (for 64-bit machines) or studio.exe (for 32-bit machines).</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/v35095b53655653106712feb44f96c6929ce012ae38486ad7db1de265cbd9b7ec/android/images/favicon.png" class="icon bookmark-icon"/>https://developer.android.com/studio/install</div></div><img src="https://developer.android.com/studio/images/studio-install-chromeos.png" class="bookmark-image"/></a></figure><h3 id="c2f0dfdb-7395-465e-8e03-9f5ab651122c" class="">Introduction</h3><figure id="47e64cca-155d-4c5e-9b89-2706352dad0b"><a href="https://developer.android.com/studio/intro" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Meet Android Studio | Android Developers</div><div class="bookmark-description">Android Studio is the official Integrated Development Environment (IDE) for Android app development, based on IntelliJ IDEA .</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/v0e4e104495105e7f1e0709003bc8740507426db77c74cec8d9625a7c35862984/android/images/favicon.png" class="icon bookmark-icon"/>https://developer.android.com/studio/intro</div></div><img src="https://developer.android.com/images/android-developers.png" class="bookmark-image"/></a></figure><h2 id="80968dff-bb60-4054-9e25-a6fbecef29d8" class="">Compiler et lancer une application Android</h2><figure class="callout" style="white-space:pre-wrap;display:flex" id="2bc37e55-293d-4328-b100-2ef589fb0db1"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Télécharger le code source de l&#x27;application Plaid par Google.
+https://github.com/android/plaid (<code>git clone https://github.com/android/plaid.git</code>)</div></figure><figure class="callout" style="white-space:pre-wrap;display:flex" id="9895377d-a191-4f69-9384-2aa305cde7f7"><div style="font-size:1.5em"><span class="icon">✍</span></div><div style="width:100%">Ouvrir le projet dans Android Studio. (<strong><mark class="highlight-purple">File/Open</mark></strong><mark class="highlight-purple"> </mark>puis séléctionner le dossier téléchargé au dessus)</div></figure><p id="c6693959-1b79-42b6-8771-06db83cee836" class="">Pour compiler une application Android, nous utilisons <strong>Gradle</strong>, un outil d&#x27;automatisation des tâches de compilation. Il permet de récupérer les librairies utilisées et de compiler l&#x27;application au format APK qui pourra ensuite être installé sur un téléphone. </p><p id="887d6d19-d60f-4bba-bc1a-f991dba60eab" class="">Si vous n&#x27;avez pas encore activé le mode debug via USB, suivre les instructions à cette page: </p><figure id="c46c326e-a71e-40ad-a164-d6c4d8a4645f"><a href="https://developer.android.com/studio/run/device" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Run apps on a hardware device | Android Developers</div><div class="bookmark-description">When building an Android app, it&#x27;s important that you always test your app on a real device before releasing it to users. This page describes how to set up your development environment and Android device for testing and debugging over an Android Debug Bridge (ADB) connection.</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/v45a7fc87bcb751eb7763ee8391250bbc83d44548f17311eb565c4ad1b50041cb/android/images/favicon.png" class="icon bookmark-icon"/>https://developer.android.com/studio/run/device</div></div><img src="https://developer.android.com/images/android-developers.png" class="bookmark-image"/></a></figure><p id="4ca649a3-5eb4-4add-ae63-e91bc3b571ab" class="">Si vous n&#x27;avez pas de téléphone Android, vous pouvez aussi utiliser un émulateur:</p><figure id="52f4fa63-fd82-4945-8bb6-7a347ef47915"><a href="https://developer.android.com/studio/run/emulator" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Run apps on the Android Emulator | Android Developers</div><div class="bookmark-description">The Android Emulator simulates Android devices on your computer so that you can test your application on a variety of devices and Android API levels without needing to have each physical device. The emulator provides almost all of the capabilities of a real Android device.</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/v45a7fc87bcb751eb7763ee8391250bbc83d44548f17311eb565c4ad1b50041cb/android/images/favicon.png" class="icon bookmark-icon"/>https://developer.android.com/studio/run/emulator</div></div><img src="https://developer.android.com/images/android-developers.png" class="bookmark-image"/></a></figure><p id="86f25327-f31d-44b0-b97d-17d56299e870" class="">
+</p><figure class="callout" style="white-space:pre-wrap;display:flex" id="04f6cc24-03a4-47df-9296-b53bb20a733a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour lancer l&#x27;application, utilisez la commande <mark class="highlight-teal">CTRL + R</mark> ou bien appuyez sur le bouton <mark class="highlight-purple"><strong>Run &#x27;App&#x27;: </strong></mark>(ou utiliser la commande <code>./gradlew installDebug</code> dans le terminal)</div></figure><figure class="callout" style="white-space:pre-wrap;display:flex" id="02ca9220-efce-4d86-aa54-e2f537519113"><div style="font-size:1.5em"><span class="icon">📱</span></div><div style="width:100%">Compilez et lancez l&#x27;application sur votre téléphone</div></figure><ul id="dff9ebe9-7734-4bab-8dbd-e82a7f8c6e24" class="toggle"><li><details open=""><summary>Vous devriez obtenir un écran comme celui ci: </summary><figure id="32eccc62-a7b8-4f09-bba4-3a5f698ebf0f" class="image"><a href="E%CC%81tapes%20pre%CC%81liminaires%2032eccc62a7b84f09bba43a5f698ebf0f/Untitled.png"><img style="width:384px" src="E%CC%81tapes%20pre%CC%81liminaires%2032eccc62a7b84f09bba43a5f698ebf0f/Untitled.png"/></a></figure><p id="c6fbc442-57d4-4de8-8ae8-868bbf362854" class="">
+</p></details></li></ul></div></article></body></html>
